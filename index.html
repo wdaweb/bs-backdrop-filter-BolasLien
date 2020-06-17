@@ -9,7 +9,7 @@
   <title>backdrop-filter</title>
   <style>
     body {
-      background: url('./images/bg.png') no-repeat center center/cover;
+      background: url('./images/bg.png') no-repeat fixed center/cover;
       background-attachment: fixed;
     }
 
@@ -18,10 +18,16 @@
       .row {
         -ms-flex-direction: column !important;
         flex-direction: column !important;
-        height: 150vh;
+        height: 100vh;
         margin-left: 2rem;
         margin-right: 2rem;
         margin-top: 2rem;
+        flex-wrap: nowrap;
+      }
+
+      .row>.col {
+        flex-shrink: 0;
+        min-height: 100px;
       }
 
       .row>.col:first-child {
@@ -35,13 +41,20 @@
     }
 
     @media (min-width:576px) {
+      .container-fluid{
+        overflow-y: hidden;
+      }
       .row {
-        width: 200vw;
+        width: 100vw;
         height: 100%;
         margin-left: 5rem;
+        align-items: center;
+        flex-wrap: nowrap;
       }
 
       .row>.col {
+        flex-shrink: 0;
+        min-width: 300px;
         height: 60vh;
       }
 
@@ -70,7 +83,7 @@
 
 <body>
   <div class="container-fluid vh-100 p-0">
-    <div class="row justify-content-center align-items-center">
+    <div class="row">
       <div class="col"><span> backdrop-filter</span><span>效果</span></div>
       <div class="col" style="backdrop-filter: grayscale(1);">backdrop-filter: grayscale(1)</div>
       <div class="col" style="backdrop-filter: none;">backdrop-filter: none</div>
